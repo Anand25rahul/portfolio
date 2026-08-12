@@ -23,14 +23,30 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
+const User = require('./models/User');
+
+// Helper to auto-seed default admin user if missing
+async function ensureDefaultAdmin() {
+  try {
+    const adminExists = await User.findOne({ username: 'anand' });
+    if (!adminExists) {
+      await User.create({ username: 'anand', password: '123456' });
+      console.log('👤 Auto-seeded default admin user: anand / 123456');
+    }
+  } catch (err) {
+    console.error('⚠️ Could not verify default admin user:', err.message);
+  }
+}
+
 // ── Database Connection & Server Start ──
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/portfolio';
 
 mongoose
   .connect(MONGO_URI)
-  .then(() => {
+  .then(async () => {
     console.log('✅ MongoDB connected successfully');
+    await ensureDefaultAdmin();
     app.listen(PORT, () => {
       console.log(`🚀 Portfolio API server running on http://localhost:${PORT}`);
     });

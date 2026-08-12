@@ -1,26 +1,27 @@
 import { useState } from 'react'
 
 const SKILL_ITEMS = [
-  // Cloud & Databases
-  { name: 'Amazon EC2 & S3', category: 'frontend', level: 90, icon: '☁️' },
-  { name: 'AWS IAM & VPC Networks', category: 'frontend', level: 85, icon: '🛡️' },
-  { name: 'AWS Lambda & RDS', category: 'frontend', level: 80, icon: '⚡' },
+  // Cloud (AWS)
+  { name: 'Amazon EC2 & S3', category: 'frontend', level: 92, icon: '☁️' },
+  { name: 'AWS IAM, VPC & CloudWatch', category: 'frontend', level: 90, icon: '🛡️' },
+  { name: 'AWS Lambda & RDS', category: 'frontend', level: 85, icon: '⚡' },
+  { name: 'Prometheus & Grafana (Monitoring)', category: 'frontend', level: 82, icon: '📈' },
   { name: 'SQL & MySQL Databases', category: 'frontend', level: 88, icon: '📊' },
-  { name: 'Google Cloud Platform (GCP)', category: 'frontend', level: 75, icon: '🌐' },
-  
+
   // DevOps & Automation
   { name: 'Docker Containers', category: 'backend', level: 92, icon: '🐳' },
-  { name: 'Kubernetes Orchestration', category: 'backend', level: 85, icon: '☸️' },
-  { name: 'Terraform Infrastructure-as-Code', category: 'backend', level: 88, icon: '🛠️' },
-  { name: 'Ansible Automation', category: 'backend', level: 80, icon: '🤖' },
-  { name: 'Jenkins CI/CD Pipelines', category: 'backend', level: 85, icon: '🚀' },
-  
-  // Programming & Tools
-  { name: 'Core Java & Spring Boot', category: 'tools', level: 90, icon: '☕' },
-  { name: 'JavaScript & React.js', category: 'tools', level: 88, icon: '⚛️' },
-  { name: 'Linux OS (Ubuntu CLI)', category: 'tools', level: 85, icon: '🐧' },
+  { name: 'Kubernetes Orchestration (kubectl / Minikube)', category: 'backend', level: 88, icon: '☸️' },
+  { name: 'Terraform Infrastructure-as-Code', category: 'backend', level: 90, icon: '🛠️' },
+  { name: 'Ansible Automation', category: 'backend', level: 85, icon: '🤖' },
+  { name: 'Jenkins & GitHub Actions CI/CD', category: 'backend', level: 90, icon: '🚀' },
+  { name: 'Google Cloud Platform (GCP)', category: 'backend', level: 80, icon: '🌐' },
+
+  // Scripting & Tools
+  { name: 'Python & Bash Scripting', category: 'tools', level: 88, icon: '🐍' },
+  { name: 'Java & JavaScript', category: 'tools', level: 90, icon: '☕' },
+  { name: 'Linux OS (Ubuntu CLI)', category: 'tools', level: 90, icon: '🐧' },
   { name: 'Git & GitHub Version Control', category: 'tools', level: 92, icon: '🐙' },
-  { name: 'VS Code & Eclipse IDEs', category: 'tools', level: 90, icon: '💻' }
+  { name: 'VS Code & Postman', category: 'tools', level: 90, icon: '💻' }
 ]
 
 export default function About({ t, skills, adminMode, onEdit, onDelete, profile }) {
@@ -59,7 +60,7 @@ export default function About({ t, skills, adminMode, onEdit, onDelete, profile 
             {bio}
           </p>
           <p style={{ fontSize: '0.98rem', lineHeight: '1.7' }}>
-            I specialize in orchestrating cloud platforms and automation tools to simplify deployment operations. Having coded in Java and React.js, I bridge the gap between software development and stable infrastructure operations.
+            I specialize in orchestrating AWS cloud services, containerized applications, and automated release pipelines to achieve reliable, high-availability deployments with zero downtime.
           </p>
         </div>
 

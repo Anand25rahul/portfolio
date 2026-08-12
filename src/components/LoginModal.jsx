@@ -4,10 +4,12 @@ export default function LoginModal({ onClose, onLoginSuccess, onError }) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
+  const [errorMsg, setErrorMsg] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
     setLoading(true)
+    setErrorMsg('')
 
     fetch('/api/auth/login', {
       method: 'POST',
@@ -21,12 +23,16 @@ export default function LoginModal({ onClose, onLoginSuccess, onError }) {
           onLoginSuccess()
           onClose()
         } else {
-          onError('Authentication Failed', res.message || 'Invalid username or password.')
+          const msg = res.message || 'Incorrect ID or password. Access denied.'
+          setErrorMsg(msg)
+          if (onError) onError('Authentication Failed', msg)
         }
       })
       .catch(err => {
         setLoading(false)
-        onError('Network Error', 'Could not reach database.')
+        const msg = 'Could not reach server or database.'
+        setErrorMsg(msg)
+        if (onError) onError('Network Error', msg)
         console.error('Login Error:', err)
       })
   }
@@ -76,9 +82,30 @@ export default function LoginModal({ onClose, onLoginSuccess, onError }) {
         {/* Title */}
         <div style={{ fontSize: '2.5rem', marginBottom: '0.8rem' }}>🔒</div>
         <h3 style={{ fontSize: '1.4rem', marginBottom: '0.4rem' }}>Admin Edit Access</h3>
-        <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginBottom: '1.8rem' }}>
-          Enter credentials to unlock edit controls.
+        <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginBottom: '1.4rem' }}>
+          Enter admin credentials to unlock edit controls and view Inbox messages.
         </p>
+
+        {/* Inline Error Alert Box */}
+        {errorMsg && (
+          <div style={{
+            background: 'rgba(239, 68, 68, 0.15)',
+            border: '1px solid rgba(239, 68, 68, 0.4)',
+            color: '#ef4444',
+            borderRadius: '8px',
+            padding: '0.7rem 0.9rem',
+            fontSize: '0.82rem',
+            marginBottom: '1.2rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            textAlign: 'left',
+            animation: 'fadeIn 0.2s ease-out'
+          }}>
+            <span style={{ fontSize: '1.1rem' }}>⚠️</span>
+            <span>{errorMsg}</span>
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', textAlign: 'left' }}>
           <div className="form-group">
@@ -86,9 +113,12 @@ export default function LoginModal({ onClose, onLoginSuccess, onError }) {
             <input 
               type="text" 
               value={username} 
-              onChange={e => setUsername(e.target.value)} 
+              onChange={e => {
+                setUsername(e.target.value)
+                if (errorMsg) setErrorMsg('')
+              }} 
               className="form-input" 
-              placeholder="e.g. anand" 
+              placeholder="Enter ID" 
               required 
             />
           </div>
@@ -97,15 +127,18 @@ export default function LoginModal({ onClose, onLoginSuccess, onError }) {
             <input 
               type="password" 
               value={password} 
-              onChange={e => setPassword(e.target.value)} 
+              onChange={e => {
+                setPassword(e.target.value)
+                if (errorMsg) setErrorMsg('')
+              }} 
               className="form-input" 
-              placeholder="••••••" 
+              placeholder="Enter Password" 
               required 
             />
           </div>
 
           <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '0.65rem' }} disabled={loading}>
-            {loading ? <span className="spinner spinner-sm" /> : 'Unlock Controls'}
+            {loading ? <span className="spinner spinner-sm" /> : 'Unlock Admin Controls'}
           </button>
         </form>
       </div>

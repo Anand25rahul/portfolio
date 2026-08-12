@@ -12,38 +12,38 @@ const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/portfolio'
 
 const projects = [
   {
-    title: 'GPS Tracking System',
-    desc: '• Implemented live location tracking using GPS modules and integrated map visualization.\n• Enabled route history and location updates for better monitoring and analysis.\n• Focused on accuracy, real-time updates, and system reliability.',
-    tags: ['GPS Modules', 'Map API Integration', 'Real-time Tracking', 'Location History'],
+    title: 'CI/CD Pipeline for a Spring Boot Application',
+    desc: '• Built an end-to-end Jenkins pipeline that pulls code from GitHub, builds and tests it, packages it into a Docker image, and deploys it to an EC2 instance.\n• Used a multi-stage Dockerfile and webhook-triggered builds so every push to main deploys automatically, eliminating manual release steps.',
+    tags: ['Jenkins', 'Docker', 'GitHub', 'AWS EC2', 'Spring Boot', 'CI/CD'],
     category: 'web',
-    icon: '🗺️',
+    icon: '🚀',
     demoLink: '#',
     codeLink: '#'
   },
   {
-    title: 'School Management System',
-    desc: '• Designed modules for student registration, attendance, exams, fees, and results.\n• Implemented role-based access for Admin, Teachers, and Students.\n• Reduced manual work by digitizing daily school operations.',
-    tags: ['Java', 'React.js', 'Role Access Control', 'Administrative Automation', 'SQL Database'],
+    title: 'Infrastructure as Code on AWS',
+    desc: '• Wrote modular Terraform configurations to provision a VPC, EC2 instances, S3 buckets, and IAM roles/policies from code instead of the console.\n• Used remote state and variables to make the setup repeatable across environments, and destroyed/re-created the stack to validate idempotency.',
+    tags: ['Terraform', 'AWS (VPC, EC2, S3, IAM)', 'Infrastructure as Code'],
     category: 'web',
-    icon: '🏫',
+    icon: '🏗️',
     demoLink: '#',
     codeLink: '#'
   },
   {
-    title: 'Yatra Bus Reservation Portal',
-    desc: '• Designed and developed a full-stack bus booking dashboard with role validations (Admins & Passengers).\n• Integrated dynamic multi-language translations across 8 Indian languages and custom light/dark theme variables.\n• Enabled ticket booking schedules, seat reservation matrix layouts, and dynamic ticket downloads.',
-    tags: ['React.js', 'Express.js', 'MongoDB', 'i18next', 'Theme Toggle'],
+    title: 'Automated Server Configuration',
+    desc: '• Wrote Ansible playbooks and roles to configure EC2 instances automatically — installing Docker, Nginx, and monitoring agents in place of manual setup.\n• Used Python scripts alongside Ansible for pre-flight checks (connectivity, disk space) and to parse/report playbook run results.',
+    tags: ['Ansible', 'Python', 'AWS EC2', 'Nginx', 'Automation'],
     category: 'web',
-    icon: '🚌',
+    icon: '🤖',
     demoLink: '#',
     codeLink: '#'
   },
   {
-    title: 'Developer Portfolio Website',
-    desc: '• Designed and developed a premium glassmorphic single-page developer portfolio with responsive page graphics.\n• Integrated multi-language dictionaries (English/Hindi) and customized theme selectors (Dark/Light).\n• Connected with Express & MongoDB backend to serve CRUD API endpoints for dynamic projects, skills, timeline, and certifications loading.',
-    tags: ['React.js', 'Vite', 'Express.js', 'MongoDB', 'Glassmorphism'],
+    title: 'Containerized Microservices on Kubernetes',
+    desc: '• Dockerized a set of Java and Node.js services and deployed them to a local Kubernetes cluster (Deployments, Services, ConfigMaps).\n• Practiced rolling updates, scaling, and pod-level troubleshooting to build hands-on Kubernetes operations experience with zero downtime deploys.',
+    tags: ['Docker', 'Kubernetes (Minikube)', 'kubectl', 'GCP', 'Microservices'],
     category: 'web',
-    icon: '💻',
+    icon: '☸️',
     demoLink: '#',
     codeLink: '#'
   }
@@ -51,44 +51,46 @@ const projects = [
 
 const skills = [
   // Cloud & Databases
-  { name: 'Amazon EC2 & S3', category: 'frontend', level: 90, icon: '☁️' },
-  { name: 'AWS IAM & VPC Networks', category: 'frontend', level: 85, icon: '🛡️' },
-  { name: 'AWS Lambda & RDS', category: 'frontend', level: 80, icon: '⚡' },
+  { name: 'AWS Cloud (EC2, S3, IAM, VPC, CloudWatch, Lambda, RDS)', category: 'frontend', level: 92, icon: '☁️' },
+  { name: 'Amazon EC2 & S3', category: 'frontend', level: 92, icon: '☁️' },
+  { name: 'AWS IAM, VPC & CloudWatch', category: 'frontend', level: 90, icon: '🛡️' },
+  { name: 'AWS Lambda & RDS', category: 'frontend', level: 85, icon: '⚡' },
+  { name: 'Prometheus & Grafana (Monitoring)', category: 'frontend', level: 82, icon: '📈' },
   { name: 'SQL & MySQL Databases', category: 'frontend', level: 88, icon: '📊' },
-  { name: 'Google Cloud Platform (GCP)', category: 'frontend', level: 75, icon: '🌐' },
-  
+
   // DevOps & Automation
   { name: 'Docker Containers', category: 'backend', level: 92, icon: '🐳' },
-  { name: 'Kubernetes Orchestration', category: 'backend', level: 85, icon: '☸️' },
-  { name: 'Terraform Infrastructure-as-Code', category: 'backend', level: 88, icon: '🛠️' },
-  { name: 'Ansible Automation', category: 'backend', level: 80, icon: '🤖' },
-  { name: 'Jenkins CI/CD Pipelines', category: 'backend', level: 85, icon: '🚀' },
-  
+  { name: 'Kubernetes Orchestration (kubectl / Minikube)', category: 'backend', level: 88, icon: '☸️' },
+  { name: 'Terraform Infrastructure-as-Code', category: 'backend', level: 90, icon: '🛠️' },
+  { name: 'Ansible Automation', category: 'backend', level: 85, icon: '🤖' },
+  { name: 'Jenkins & GitHub Actions CI/CD', category: 'backend', level: 90, icon: '🚀' },
+  { name: 'Google Cloud Platform (GCP)', category: 'backend', level: 80, icon: '🌐' },
+
   // Programming & Tools
-  { name: 'Core Java & Spring Boot', category: 'tools', level: 90, icon: '☕' },
-  { name: 'JavaScript & React.js', category: 'tools', level: 88, icon: '⚛️' },
-  { name: 'Linux OS (Ubuntu CLI)', category: 'tools', level: 85, icon: '🐧' },
+  { name: 'Python & Bash Scripting', category: 'tools', level: 88, icon: '🐍' },
+  { name: 'Java & JavaScript', category: 'tools', level: 90, icon: '☕' },
+  { name: 'Linux OS (Ubuntu CLI)', category: 'tools', level: 90, icon: '🐧' },
   { name: 'Git & GitHub Version Control', category: 'tools', level: 92, icon: '🐙' },
-  { name: 'VS Code & Eclipse IDEs', category: 'tools', level: 90, icon: '💻' }
+  { name: 'VS Code & Postman', category: 'tools', level: 90, icon: '💻' }
 ];
 
 const timeline = [
   {
-    year: 'Jan 2025 - Present',
-    title: 'Software Developer',
+    year: 'Jan 2025 – Present',
+    title: 'DevOps Engineer',
     subtitle: 'Speedotrack GPS Pvt. Ltd., Ranchi',
-    description: 'Designing and coding live GPS-based vehicle/user tracking interfaces. Building scalable School Administration Modules, working with corporate clients to compile requirements, and conducting system deployments.',
+    description: '• Managed build, release, and deployment workflows for a real-time GPS tracking platform, using Git for version control and coordinating rollouts across multiple client environments.\n• Deployed and maintained a School Management System (Edusoft) across several client environments, handling environment configuration, release scheduling, and post-deployment checks.\n• Partnered directly with clients to gather infrastructure and release requirements, translating them into deployment plans and configuration changes.\n• Owned the release lifecycle end-to-end — build, test, deploy, and monitor — across parallel production environments, reducing manual release effort.',
     order: 1
   },
   {
-    year: 'Aug 2023 - Dec 2024',
+    year: 'Aug 2023 – Dec 2024',
     title: 'Java Full Stack Development Training',
     subtitle: 'JSpiders Academy',
     description: 'Underwent intensive developer specialization. Mastered Core Java, Spring Boot microservices, SQL databases, database integrations, and essential modern web markup and styling technologies.',
     order: 2
   },
   {
-    year: '2019 - 2023',
+    year: '2019 – 2023',
     title: 'B.Tech in Computer Science',
     subtitle: 'Jai Narain College of Technology, Bhopal',
     description: 'Acquired core computing knowledge, scoring a CGPA of 7.93. Specialized in engineering mathematics, data structures, algorithms, operating systems, and object-oriented architectures.',
@@ -98,35 +100,35 @@ const timeline = [
 
 const certifications = [
   {
-    title: '[NEW] Ultimate AWS Certified Cloud Practitioner CLF-C02 2026',
-    issuer: 'Udemy',
+    title: 'AWS Certified Cloud Practitioner (CLF-C02)',
+    issuer: 'AWS',
     icon: '☁️',
     url: 'https://ude.my/UC-01ff7934-4c2c-4dcb-9be4-1376a0cd846d',
-    credentialId: 'UC-01ff7934-4c2c-4dcb-9be4-1376a0cd846d'
+    credentialId: 'CLF-C02'
   },
   {
-    title: '[NEW] Ultimate AWS Certified AI Practitioner AIF-C01',
-    issuer: 'Udemy',
+    title: 'AWS Certified AI Practitioner (AIF-C01)',
+    issuer: 'AWS',
     icon: '🤖',
     url: 'https://ude.my/UC-7a86ce50-2ec3-492c-a475-266dde27eb11',
-    credentialId: 'UC-7a86ce50-2ec3-492c-a475-266dde27eb11'
+    credentialId: 'AIF-C01'
   },
   {
-    title: 'Master DevOps with AWS, Docker, Kubernetes, GCP, GitHub Actions, ArgoCD, GitOps, Terraform, Monitoring & AI',
+    title: 'Master DevOps with AWS, Docker, Kubernetes, GCP, GitHub Actions, ArgoCD, GitOps, Terraform & Monitoring',
     issuer: 'Udemy',
     icon: '🚀',
     url: '#'
   },
   {
     title: 'Core Java',
-    issuer: 'Coursera',
+    issuer: 'Coursera / JSpiders',
     icon: '☕',
     url: 'https://www.coursera.org/account/accomplishments/specialization/CQH492ZVGC3C',
     credentialId: 'CQH492ZVGC3C'
   },
   {
     title: 'SQL',
-    issuer: 'Coursera',
+    issuer: 'Coursera / JSpiders',
     icon: '📊',
     url: 'https://www.coursera.org/account/accomplishments/verify/R45HQU44DEC3',
     credentialId: 'R45HQU44DEC3'
@@ -135,9 +137,9 @@ const certifications = [
 
 const profileData = {
   name: 'RAHUL ANAND',
-  title: 'Software Developer | DevOps & AWS Cloud Engineer',
-  subTitle: 'Software Developer with 1+ years of experience in Java and React.js, actively seeking a DevOps & AWS Cloud Engineer role.',
-  aboutBio: 'Software Developer with 1+ years of experience in Java and React.js, actively seeking a DevOps & AWS Cloud Engineer role. AWS-certified (CLF-C02 & AIF-C01) with hands-on exposure to Docker, Kubernetes, Terraform, Ansible, Jenkins, Linux, and Git — ready to drive cloud automation and CI/CD pipelines.',
+  title: 'DevOps Engineer | AWS Cloud & Automation',
+  subTitle: 'AWS-certified DevOps & Cloud Engineer with 1+ years of experience automating deployments, managing CI/CD release pipelines, and provisioning cloud infrastructure for production systems.',
+  aboutBio: 'AWS-certified DevOps & Cloud Engineer with 1+ years of experience automating deployments, managing CI/CD release pipelines, and provisioning cloud infrastructure for production systems. Hands-on with Docker, Kubernetes, Terraform, Ansible, Jenkins, AWS, and GCP, having built and operated end-to-end infrastructure-automation and CI/CD projects. Focused on reliability, automation, and streamlined cloud operations.',
   email: 'anaashutosh888@gmail.com',
   linkedinUrl: 'https://linkedin.com/in/rahul-anand-22a546218',
   githubUrl: 'https://github.com/Anand25rahul',

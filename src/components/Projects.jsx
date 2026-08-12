@@ -1,41 +1,41 @@
 const PROJECTS_LIST = [
   {
     id: 1,
-    title: 'GPS Tracking System',
-    desc: '• Implemented live location tracking using GPS modules and integrated map visualization.\n• Enabled route history and location updates for better monitoring and analysis.\n• Focused on accuracy, real-time updates, and system reliability.',
-    tags: ['GPS Modules', 'Map API Integration', 'Real-time Tracking', 'Location History'],
+    title: 'CI/CD Pipeline for a Spring Boot Application',
+    desc: '• Built an end-to-end Jenkins pipeline that pulls code from GitHub, builds and tests it, packages it into a Docker image, and deploys it to an EC2 instance.\n• Used a multi-stage Dockerfile and webhook-triggered builds so every push to main deploys automatically, eliminating manual release steps.',
+    tags: ['Jenkins', 'Docker', 'GitHub', 'AWS EC2', 'Spring Boot', 'CI/CD'],
     category: 'web',
-    icon: '🗺️',
+    icon: '🚀',
     demoLink: '#',
     codeLink: '#'
   },
   {
     id: 2,
-    title: 'School Management System',
-    desc: '• Designed modules for student registration, attendance, exams, fees, and results.\n• Implemented role-based access for Admin, Teachers, and Students.\n• Reduced manual work by digitizing daily school operations.',
-    tags: ['Java', 'React.js', 'Role Access Control', 'Administrative Automation', 'SQL Database'],
+    title: 'Infrastructure as Code on AWS',
+    desc: '• Wrote modular Terraform configurations to provision a VPC, EC2 instances, S3 buckets, and IAM roles/policies from code instead of the console.\n• Used remote state and variables to make the setup repeatable across environments, and destroyed/re-created the stack to validate idempotency.',
+    tags: ['Terraform', 'AWS (VPC, EC2, S3, IAM)', 'Infrastructure as Code'],
     category: 'web',
-    icon: '🏫',
+    icon: '🏗️',
     demoLink: '#',
     codeLink: '#'
   },
   {
     id: 3,
-    title: 'Yatra Bus Reservation Portal',
-    desc: '• Designed and developed a full-stack bus booking dashboard with role validations (Admins & Passengers).\n• Integrated dynamic multi-language translations across 8 Indian languages and custom light/dark theme variables.\n• Enabled ticket booking schedules, seat reservation matrix layouts, and dynamic ticket downloads.',
-    tags: ['React.js', 'Express.js', 'MongoDB', 'i18next', 'Theme Toggle'],
+    title: 'Automated Server Configuration',
+    desc: '• Wrote Ansible playbooks and roles to configure EC2 instances automatically — installing Docker, Nginx, and monitoring agents in place of manual setup.\n• Used Python scripts alongside Ansible for pre-flight checks (connectivity, disk space) and to parse/report playbook run results.',
+    tags: ['Ansible', 'Python', 'AWS EC2', 'Nginx', 'Automation'],
     category: 'web',
-    icon: '🚌',
+    icon: '🤖',
     demoLink: '#',
     codeLink: '#'
   },
   {
     id: 4,
-    title: 'Developer Portfolio Website',
-    desc: '• Designed and developed a premium glassmorphic single-page developer portfolio with responsive page graphics.\n• Integrated multi-language dictionaries (English/Hindi) and customized theme selectors (Dark/Light).\n• Connected with Express & MongoDB backend to serve CRUD API endpoints for dynamic projects, skills, timeline, and certifications loading.',
-    tags: ['React.js', 'Vite', 'Express.js', 'MongoDB', 'Glassmorphism'],
+    title: 'Containerized Microservices on Kubernetes',
+    desc: '• Dockerized a set of Java and Node.js services and deployed them to a local Kubernetes cluster (Deployments, Services, ConfigMaps).\n• Practiced rolling updates, scaling, and pod-level troubleshooting to build hands-on Kubernetes operations experience with zero downtime deploys.',
+    tags: ['Docker', 'Kubernetes (Minikube)', 'kubectl', 'GCP', 'Microservices'],
     category: 'web',
-    icon: '💻',
+    icon: '☸️',
     demoLink: '#',
     codeLink: '#'
   }

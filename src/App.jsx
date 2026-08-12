@@ -9,6 +9,7 @@ import Contact from './components/Contact'
 import Toast from './components/Toast'
 import AdminModal from './components/AdminModal'
 import LoginModal from './components/LoginModal'
+import InboxModal from './components/InboxModal'
 import { translations } from './utils/translations'
 
 function App() {
@@ -21,10 +22,12 @@ function App() {
   const [timelineData, setTimelineData] = useState([])
   const [certifications, setCertifications] = useState([])
   const [profile, setProfile] = useState(null)
+  const [messages, setMessages] = useState([])
   
   const [adminMode, setAdminMode] = useState(() => localStorage.getItem('portfolio_admin') === 'true')
   const [modal, setModal] = useState(null)
   const [showLoginModal, setShowLoginModal] = useState(false)
+  const [showInboxModal, setShowInboxModal] = useState(false)
 
   const fetchProjects = () => {
     fetch('/api/projects')
@@ -71,13 +74,23 @@ function App() {
       .catch(err => console.error('Error fetching profile:', err))
   }
 
-  // Fetch initial profile data from Node.js CRUD APIs
+  const fetchMessages = () => {
+    fetch('/api/messages')
+      .then(res => res.json())
+      .then(res => {
+        if (res.success && res.data) setMessages(res.data)
+      })
+      .catch(err => console.error('Error fetching messages:', err))
+  }
+
+  // Fetch initial data from Node.js APIs
   useEffect(() => {
     fetchProjects()
     fetchSkills()
     fetchTimeline()
     fetchCertifications()
     fetchProfile()
+    fetchMessages()
   }, [])
 
   // Sync admin mode preference
@@ -155,6 +168,8 @@ function App() {
     setToasts(prev => prev.filter(t => t.id !== id))
   }
 
+  const unreadMessagesCount = messages.filter(m => !m.read).length
+
   return (
     <>
       <div className="bg-grid-overlay" />
@@ -169,6 +184,8 @@ function App() {
         adminMode={adminMode}
         toggleAdminMode={handleToggleAdmin}
         onEditProfile={handleEditProfile}
+        onOpenInbox={() => setShowInboxModal(true)}
+        unreadCount={unreadMessagesCount}
       />
 
       {/* Main Sections Layout */}
@@ -180,7 +197,10 @@ function App() {
         <Timeline t={t} timelineData={timelineData} adminMode={adminMode} onEdit={handleEdit} onDelete={handleDelete} />
         <Contact 
           t={t} 
-          onSuccess={(title, msg) => showToast(title, msg, 'success')} 
+          onSuccess={(title, msg) => {
+            showToast(title, msg, 'success')
+            fetchMessages()
+          }} 
           onError={(title, msg) => showToast(title, msg, 'error')} 
         />
       </main>
@@ -203,18 +223,30 @@ function App() {
         />
       )}
 
+      {/* Admin Inbox Modal */}
+      {showInboxModal && (
+        <InboxModal
+          messages={messages}
+          onClose={() => setShowInboxModal(false)}
+          onRefresh={fetchMessages}
+          onError={(title, msg) => showToast(title, msg, 'error')}
+          showToast={showToast}
+        />
+      )}
+
       {/* Login Modal overlay */}
       {showLoginModal && (
         <LoginModal
           onClose={() => setShowLoginModal(false)}
           onLoginSuccess={() => {
             setAdminMode(true)
-            showToast('Controls Unlocked', 'You can now edit all sections of this page.', 'success')
+            showToast('Controls Unlocked', 'Logged in as Admin. Edit mode and Inbox unlocked!', 'success')
             fetchProjects()
             fetchSkills()
             fetchTimeline()
             fetchCertifications()
             fetchProfile()
+            fetchMessages()
           }}
           onError={(title, msg) => showToast(title, msg, 'error')}
         />

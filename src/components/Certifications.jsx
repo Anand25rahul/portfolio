@@ -1,34 +1,34 @@
 const STATIC_CERTS = [
   { 
-    title: '[NEW] Ultimate AWS Certified Cloud Practitioner CLF-C02 2026', 
-    issuer: 'Udemy', 
+    title: 'AWS Certified Cloud Practitioner (CLF-C02)', 
+    issuer: 'AWS', 
     icon: '☁️', 
     url: 'https://ude.my/UC-01ff7934-4c2c-4dcb-9be4-1376a0cd846d',
-    credentialId: 'UC-01ff7934-4c2c-4dcb-9be4-1376a0cd846d'
+    credentialId: 'CLF-C02'
   },
   { 
-    title: '[NEW] Ultimate AWS Certified AI Practitioner AIF-C01', 
-    issuer: 'Udemy', 
+    title: 'AWS Certified AI Practitioner (AIF-C01)', 
+    issuer: 'AWS', 
     icon: '🤖', 
     url: 'https://ude.my/UC-7a86ce50-2ec3-492c-a475-266dde27eb11',
-    credentialId: 'UC-7a86ce50-2ec3-492c-a475-266dde27eb11'
+    credentialId: 'AIF-C01'
   },
   { 
-    title: 'Master DevOps with AWS, Docker, Kubernetes, GCP, GitHub Actions, ArgoCD, GitOps, Terraform, Monitoring & AI', 
+    title: 'Master DevOps with AWS, Docker, Kubernetes, GCP, GitHub Actions, ArgoCD, GitOps, Terraform & Monitoring', 
     issuer: 'Udemy', 
     icon: '🚀', 
     url: '#' 
   },
   { 
     title: 'Core Java', 
-    issuer: 'Coursera', 
+    issuer: 'Coursera / JSpiders', 
     icon: '☕', 
     url: 'https://www.coursera.org/account/accomplishments/specialization/CQH492ZVGC3C',
     credentialId: 'CQH492ZVGC3C'
   },
   { 
     title: 'SQL', 
-    issuer: 'Coursera', 
+    issuer: 'Coursera / JSpiders', 
     icon: '📊', 
     url: 'https://www.coursera.org/account/accomplishments/verify/R45HQU44DEC3',
     credentialId: 'R45HQU44DEC3'

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export default function Navbar({ lang, setLang, theme, toggleTheme, t, adminMode, toggleAdminMode, onEditProfile }) {
+export default function Navbar({ lang, setLang, theme, toggleTheme, t, adminMode, toggleAdminMode, onEditProfile, onOpenInbox, unreadCount = 0 }) {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -157,13 +157,49 @@ export default function Navbar({ lang, setLang, theme, toggleTheme, t, adminMode
           </button>
 
           {adminMode && (
-            <button
-              onClick={onEditProfile}
-              className="btn btn-secondary btn-sm"
-              style={{ padding: '0.4rem 0.8rem', fontSize: '0.8rem', borderRadius: '6px', whiteSpace: 'nowrap' }}
-            >
-              ✏️ Edit Profile
-            </button>
+            <>
+              {/* Inbox button */}
+              <button
+                onClick={onOpenInbox}
+                className="btn btn-secondary btn-sm"
+                style={{
+                  padding: '0.4rem 0.8rem',
+                  fontSize: '0.8rem',
+                  borderRadius: '6px',
+                  whiteSpace: 'nowrap',
+                  position: 'relative',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.4rem'
+                }}
+              >
+                📥 Inbox
+                {unreadCount > 0 && (
+                  <span style={{
+                    background: 'var(--accent)',
+                    color: '#fff',
+                    borderRadius: '50%',
+                    width: '18px',
+                    height: '18px',
+                    fontSize: '0.7rem',
+                    fontWeight: 'bold',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    {unreadCount}
+                  </span>
+                )}
+              </button>
+
+              <button
+                onClick={onEditProfile}
+                className="btn btn-secondary btn-sm"
+                style={{ padding: '0.4rem 0.8rem', fontSize: '0.8rem', borderRadius: '6px', whiteSpace: 'nowrap' }}
+              >
+                ✏️ Edit Profile
+              </button>
+            </>
           )}
         </div>
       </div>

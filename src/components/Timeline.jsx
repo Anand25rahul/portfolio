@@ -1,21 +1,21 @@
 const TIMELINE_DATA = [
   {
-    year: 'Jan 2025 - Present',
-    title: 'Software Developer',
+    year: 'Jan 2025 – Present',
+    title: 'DevOps Engineer',
     subtitle: 'Speedotrack GPS Pvt. Ltd., Ranchi',
-    description: 'Designing and coding live GPS-based vehicle/user tracking interfaces. Building scalable School Administration Modules, working with corporate clients to compile requirements, and conducting system deployments.'
+    description: '• Managed build, release, and deployment workflows for a real-time GPS tracking platform.\n• Deployed and maintained School Management System (Edusoft) across several client environments.\n• Partnered directly with clients to gather infrastructure and release requirements.\n• Owned the release lifecycle end-to-end — build, test, deploy, and monitor.'
   },
   {
-    year: 'Aug 2023 - Dec 2024',
+    year: 'Aug 2023 – Dec 2024',
     title: 'Java Full Stack Development Training',
     subtitle: 'JSpiders Academy',
     description: 'Underwent intensive developer specialization. Mastered Core Java, Spring Boot microservices, SQL databases, database integrations, and essential modern web markup and styling technologies.'
   },
   {
-    year: '2019 - 2023',
+    year: '2019 – 2023',
     title: 'B.Tech in Computer Science',
     subtitle: 'Jai Narain College of Technology, Bhopal',
-    description: 'Acquired core computing knowledge, scoring a CGPA of 7.93. Specialized in engineering mathematics, data structures, algorithms, operating systems, and object-oriented architectures.'
+    description: 'Acquired core computing knowledge, scoring a CGPA of 7.93. Specialized in engineering mathematics, data structures, algorithms, operating systems, and computer architectures.'
   }
 ]
 
